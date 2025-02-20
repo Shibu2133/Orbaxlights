@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbax Lights</title>
+
+    <style>
+        body {
+            background: white; /* Set background to white */
+        }
+
+        #home {
+            height: 100vh; /* Full screen height */
+            display: flex;
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            background: url('backgound.jpg') no-repeat center center fixed;
+            background-size: cover; /* Ensure the background image fills the container */
+        }
+
+        .home-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for better readability */
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            color: white; /* Ensure text is readable over dark background */
+        }
+
+            .home-content h1 {
+                font-size: 3.5rem;
+                margin-bottom: 15px;
+                font-weight: bold;
+            }
+
+            .home-content p {
+                font-size: 1.5rem;
+                line-height: 1.8;
+            }
+
+
+
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: black;
+                    font-weight: bold;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: gold;
+                    }
+
+        .category {
+            margin: 20px 0;
+        }
+
+        .scroll-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .scroll-content {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
+        }
+
+        .image-item {
+            display: inline-block;
+            text-align: center;
+            min-width: 200px; /* Adjust size as needed */
+        }
+
+            .image-item img {
+                width: 150px;
+                height: 150px;
+                border-radius: 8px;
+                object-fit: cover;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .image-item p {
+                margin-top: 5px;
+                font-size: 14px;
+            }
+
+        .scroll-left,
+        .scroll-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .scroll-left {
+            left: 0;
+        }
+
+        .scroll-right {
+            right: 0;
+        }
+
+            .scroll-left:hover,
+            .scroll-right:hover {
+                background: rgba(0, 0, 0, 0.8);
+            }
+
+
+
+        .contact-message {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+        }
+
+            .contact-message a {
+                color: #007BFF;
+                text-decoration: none;
+                font-weight: bold;
+                margin-left: 5px;
+            }
+
+                .contact-message a:hover {
+                    text-decoration: underline;
+                }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .contact-form input, .contact-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .contact-form button {
+                background-color: black;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .contact-form button:hover {
+                    background-color: darkgray;
+                }
+
+        .footer {
+            text-align: center;
+            background: black;
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+
+            .footer::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: #b8860b;
+            }
+
+            .footer a {
+                text-decoration: none;
+                color: white;
+                margin: 0 10px;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        .about-us {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+            .about-us img {
+                width: 100%;
+                max-width: 400px;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            .about-us p {
+                max-width: 600px;
+                text-align: justify;
+                color: black;
+            }
+
+        h2 {
+            margin-bottom: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Orbax Lights</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="home-content">
+            <h1>Welcome to Orbax Lights</h1>
+            <p>Your premier South African lighting company. We specialize in outdoor, indoor, and wall lighting solutions tailored to your needs.</p>
+        </div>
+    </section>
+
+
+    <section id="about" class="about-us">
+        <img src="about.jpg" alt="About Orbax Lights">
+        <div>
+            <h2>About Us</h2>
+            <p>
+                At Orbax Lights, we bring brilliance to every corner of your world. As a proudly South African company, we blend innovation and craftsmanship to deliver exceptional lighting solutions for homes, offices, and outdoor spaces. Our dedication to sustainability and energy efficiency ensures that our products are not only visually stunning but also environmentally responsible.
+            </p>
+            <p>
+                What sets us apart is our commitment to understanding our clients' unique needs. Whether you're illuminating a cozy living room or designing a grand outdoor landscape, our team is here to help you achieve your vision. Join us in lighting up South Africa with elegance and style.
+            </p>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Explore These Lights</h2>
+        <p>Discover a variety of modern and elegant lighting solutions to transform your spaces.</p>
+
+        <!-- Indoor Lights -->
+        <div class="category">
+            <h3>Indoor Lights</h3>
+            <div class="scroll-container">
+                <button class="scroll-left" onclick="scrollLeft('indoor-scroll')">❮</button>
+                <div class="scroll-content" id="indoor-scroll">
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor1.jpg" alt="Indoor Light 1">
+                        <p>Golden halo</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor2.jpg" alt="Indoor Light 2">
+                        <p>layered Lux</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor3.jpg" alt="Indoor Light 3">
+                        <p> Suspended Harmony</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor4.jpg" alt="Indoor Light 4">
+                        <p>Duo lumina</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor5.jpg" alt="Indoor Light 4">
+                        <p>Golden Oasis</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor6.jpg" alt="Indoor Light 4">
+                        <p> Woodland charm</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor7.jpg" alt="Indoor Light 4">
+                        <p>Timber circle</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor8.jpg" alt="Indoor Light 4">
+                        <p>Spiral elegance</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor9.jpg" alt="Indoor Light 4">
+                        <p>Vintage glow</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor10.jpg" alt="Indoor Light 4">
+                        <p>Lunar fingerprint</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor11.jpg" alt="Indoor Light 4">
+                        <p>Hanging Haven</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor12.jpg" alt="Indoor Light 4">
+                        <p>Wooden Geometry</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor14.jpg" alt="Indoor Light 4">
+                        <p>Whimsy Circles</p>
+                    </div>
+                    v <div class="image-item">
+                        <img src="assets/indoor lights/indoor15.jpg" alt="Indoor Light 4">
+                        <p>Luminous Sack</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/indoor lights/indoor16.jpg" alt="Indoor Light 4">
+                        <p>Dark Elegance</p>
+                    </div>
+                    <!-- Add remaining images here -->
+                </div>
+                <button class="scroll-right" onclick="scrollRight('indoor-scroll')">❯</button>
+            </div>
+        </div>
+
+        <!-- LED Ceiling Lights -->
+        <div class="category">
+            <h3>LED Ceiling Lights</h3>
+            <div class="scroll-container">
+                <button class="scroll-left" onclick="scrollLeft('led-scroll')">❮</button>
+                <div class="scroll-content" id="led-scroll">
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led1.jpg" alt="LED Ceiling Light 1">
+                        <p> Aurora Circle</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led2.jpg" alt="LED Ceiling Light 2">
+                        <p> Square spectrum</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led3.jpg" alt="LED Ceiling Light 3">
+                        <p> Corner glow</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led4.jpg" alt="LED Ceiling Light 4">
+                        <p>Mini LED</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led5.jpg" alt="LED Ceiling Light 4">
+                        <p> Bathroom Bliss</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led6.jpg" alt="LED Ceiling Light 4">
+                        <p>Easyfix</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led7.jpg" alt="LED Ceiling Light 4">
+                        <p>Central glow</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led8.jpg" alt="LED Ceiling Light 4">
+                        <p>Corner Lights</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led9.jpg" alt="LED Ceiling Light 4">
+                        <p>Circle wrap</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led10.jpg" alt="LED Ceiling Light 4">
+                        <p>aluminum and acrylic highlights led splash</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led11.jpg" alt="LED Ceiling Light 4">
+                        <p>Led cove molding</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led12.jpg" alt="LED Ceiling Light 4">
+                        <p>four-bulb wooden led ceiling light</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led13.jpg" alt="LED Ceiling Light 4">
+                        <p>Central Beam</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/led ceiling lights/led14.jpg" alt="LED Ceiling Light 4">
+                        <p> Egg glow</p>
+                    </div>
+                    <!-- Add remaining images here -->
+                </div>
+                <button class="scroll-right" onclick="scrollRight('led-scroll')">❯</button>
+            </div>
+        </div>
+
+        <!-- Outdoor Lights -->
+        <div class="category">
+            <h3>Outdoor Lights</h3>
+            <div class="scroll-container">
+                <button class="scroll-left" onclick="scrollLeft('outdoor-scroll')">❮</button>
+                <div class="scroll-content" id="outdoor-scroll">
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor1.jpg" alt="Outdoor Light 1">
+                        <p>Wall Lantern</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor2.jpg" alt="Outdoor Light 2">
+                        <p>Penta Light</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor3.jpg" alt="Outdoor Light 3">
+                        <p>Cylinder beam</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor4.jpg" alt="Outdoor Light 4">
+                        <p>Gift box Light</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor5.jpg" alt="Outdoor Light 4">
+                        <p>Wall zipper</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor6.jpg" alt="Outdoor Light 4">
+                        <p>Lumina Curve</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor7.jpg" alt="Outdoor Light 4">
+                        <p>C beam trio</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor8.jpg" alt="Outdoor Light 4">
+                        <p>Classic Outdoor</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor9.jpg" alt="Outdoor Light 4">
+                        <p>Spiral Glow</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor11.jpg" alt="Outdoor Light 4">
+                        <p>Vintage Noir</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor12.jpg" alt="Outdoor Light 4">
+                        <p>Driveway Sentinels</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor13.jpg" alt="Outdoor Light 4">
+                        <p>Retro Lantern</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor14.jpg" alt="Outdoor Light 4">
+                        <p>Faith Lantern</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor15.jpg" alt="Outdoor Light 4">
+                        <p>Simple Beam</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor16.jpg" alt="Outdoor Light 4">
+                        <p>Double Glow</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="assets/oudoor lights/oudoor17.jpg" alt="Outdoor Light 4">
+                        <p>Vintage Charm</p>
+                    </div>
+                    <!-- Add remaining images here -->
+                </div>
+                <button class="scroll-right" onclick="scrollRight('outdoor-scroll')">❯</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        function scrollLeft(containerId) {
+            const container = document.getElementById(containerId);
+            container.scrollBy({
+                left: -300, // Adjust scroll amount
+                behavior: 'smooth',
+            });
+        }
+
+        function scrollRight(containerId) {
+            const container = document.getElementById(containerId);
+            container.scrollBy({
+                left: 300, // Adjust scroll amount
+                behavior: 'smooth',
+            });
+        }
+    </script>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form" action="https://formspree.io/f/xjkkjvnz" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>Location: Johannesburg, South Africa</p>
+        <p>
+            <img src="call-logo.jpg" alt="Call Logo" width="20" height="20">
+            Call Us: <a href="tel:+27698389907">+27 69 838 9907</a>
+        </p>
+        <p>
+            <img src="whatsapplogo.jpg" alt="WhatsApp Logo" width="20" height="20">
+            <a href="https://wa.me/27698389907">WhatsApp Us</a>
+        </p>
+        <p>"Illuminate Your World with Orbax Lights"</p>
+    </footer>
+
+</body>
+</html>
